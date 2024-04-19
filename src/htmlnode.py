@@ -34,10 +34,30 @@ class LeafNode(HTMLNode):
     def __repr__(self):
         return f"LeafNode({self.tag}, {self.value}, {self.props})"
 
-# vvvv manual testing stuff below vvvv
-""" tester1 = LeafNode("p", "This is a paragraph of text.")
-tester2 = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
-tester3 = LeafNode(None, "This is a paragraph of text.")
-print(tester1.to_html())
-print(tester2.to_html())
-print(tester3.to_html()) """
+
+class ParentNode(HTMLNode):
+    def __init__(self, tag, children, props=None):
+        super().__init__(tag, None, children, props)
+
+    def to_html(self):
+        if self.tag is None:
+            raise ValueError("Invalid HTML: Tag - no value")
+        if self.children is None:
+            raise ValueError("Invalid HTML: Children - no value")
+        parent_html = ""
+        for child in self.children:
+            parent_html += f'{child.to_html()}'
+        return f"<{self.tag}>{parent_html}</{self.tag}>"
+        
+        
+pnode = ParentNode(
+    "p",
+    [
+        LeafNode("b", "Bold text"),
+        LeafNode(None, "Normal text"),
+        LeafNode("i", "italic text"),
+        LeafNode(None, "Normal text"),
+    ],
+)
+
+print(pnode.to_html())
