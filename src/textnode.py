@@ -40,14 +40,3 @@ def text_node_to_html_node(text_node):
         return LeafNode("img", "", {"src": text_node.url, "alt": text_node.text})
     raise ValueError(f"Invalid text type: {text_node.text_type}")
 
-
-def split_nodes_delimiter(old_nodes, delimiter, text_type):
-    node_list = []
-    for node in old_nodes:
-        if node.text_type == text_type_text:
-            node_list.append(node)
-    return node_list
-
-# ^^^^^ PICK BACK UP HERE ^^^^^
-# figuring out how to create a list of nodes from a single node
-# https://www.boot.dev/assignments/6ec492ca-5358-4d01-8d71-ebe759c85dac
