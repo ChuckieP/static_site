@@ -40,3 +40,16 @@ def extract_markdown_links(text):
     pattern = r"\[(.*?)\]\((.*?)\)"
     matches = re.findall(pattern, text)
     return matches
+
+
+def split_nodes_image(old_nodes):
+    pass    
+
+
+
+def split_nodes_links(old_nodes_):
+    pass
+
+
+# ^^^^ pick back up here ... need to split image and link nodes
+# https://www.boot.dev/lessons/bd4a35b7-e7a5-4ae3-96d7-051695ebd3da
